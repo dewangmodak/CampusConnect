@@ -1,3 +1,4 @@
+// models/Event.js
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
@@ -5,8 +6,9 @@ const eventSchema = new mongoose.Schema({
   description: String,
   date: { type: Date, required: true },
   location: String,
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Admin
+  capacity: Number,
   createdAt: { type: Date, default: Date.now }
 });
 
